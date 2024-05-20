@@ -6,8 +6,8 @@
 // @author       Reborn121 [1864577]
 // @match        https://www.torn.com/loader.php?sid=crimes
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=torn.com
-// @downloadURL  https://github.com/R23MJ/torn-rig-heat-notification.user.js
-// @updateURL    https://github.com/R23MJ/torn-rig-heat-notification.user.js
+// @downloadURL  https://github.com/R23MJ/torn-rig-heat-notification/blob/main/torn-rig-heat-notification.user.js
+// @updateURL    https://github.com/R23MJ/torn-rig-heat-notification/blob/main/torn-rig-heat-notification.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -53,5 +53,5 @@
     }
 
     // Periodically check the heat level
-    setInterval(checkHeatLevel, CHECK_INTERVAL);
+    setInterval(checkHeatLevels, CHECK_INTERVAL);
 })();
