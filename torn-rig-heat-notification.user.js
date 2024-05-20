@@ -59,7 +59,7 @@
 
     // Function to play the alert sound
     function playAlertSound() {
-        const audio = new Audio(ALERT_SOUND_BASE64);
+        const audio = new Audio(ALERT_SOUND_URL);
         audio.play().catch(function(error) {
             console.error("Audio playback failed:", error);
         });
