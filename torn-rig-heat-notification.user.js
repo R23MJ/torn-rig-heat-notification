@@ -16,7 +16,7 @@
 
     // Configuration
     const CHECK_INTERVAL = 30000; // Check every 30 seconds
-    const HEAT_THRESHOLD = 50; // Specify the heat threshold
+    const HEAT_THRESHOLD = 40; // Specify the heat threshold
 
     // Sound settings
     const ALERT_SOUND_URL = 'https://audio.jukehost.co.uk/gxd2HB9RibSHhr13OiW6ROCaaRbD8103';
