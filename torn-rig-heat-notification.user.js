@@ -15,11 +15,11 @@
     'use strict';
 
     // Configuration
-    const CHECK_INTERVAL = 30000; // Check every 60 seconds
+    const CHECK_INTERVAL = 30000; // Check every 30 seconds
     const HEAT_THRESHOLD = 70; // Specify the heat threshold
 
     // Sound settings
-    const ALERT_SOUND_URL = 'https://audio.jukehost.co.uk/gxd2HB9RibSHhr13OiW6ROCaaRbD8103'; // URL of the alert sound    //playAlertSound();
+    const ALERT_SOUND_URL = 'https://audio.jukehost.co.uk/gxd2HB9RibSHhr13OiW6ROCaaRbD8103';
 
 
     // Function to check all heat levels
