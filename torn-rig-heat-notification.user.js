@@ -21,37 +21,50 @@
     // Sound settings
     const ALERT_SOUND_URL = 'https://audio.jukehost.co.uk/gxd2HB9RibSHhr13OiW6ROCaaRbD8103';
 
-
     // Function to check all heat levels
     function checkHeatLevels() {
-        // Get the parent element that contains all the children we need to iterate over
-        const parentElement = document.querySelector('#react-root > div > div.crime-root.cracking-root > div > div.currentCrime___MN0T1 > div.rig___aY5rF > div:nth-child(2)');
-
+        // Get the container that holds all the child elements we need to iterate over
+        const parentElement = document.querySelector('#react-root > div > div.crime-root.cracking-root > div > div.currentCrime___MN0T1 > div.rig___aY5rF');
+        
         if (parentElement) {
+            // Flag to track if all heat levels are below the threshold
+            let allBelowThreshold = true;
+
             // Iterate over each child of the parent element
             const childElements = parentElement.children;
             for (let i = 0; i < childElements.length; i++) {
-                // Select the heat element within each child
-                const heatElement = childElements[i].querySelector('div.heat___OQao1');
-                if (heatElement) {
-                    // Get the numeric heat level
-                    const heatLevel = parseInt(heatElement.textContent.trim(), 10);
+                // Iterate over the children of each child element
+                const grandChildElements = childElements[i].children;
+                for (let j = 0; j < grandChildElements.length; j++) {
+                    // Select the heat element within each grandchild
+                    const heatElement = grandChildElements[j].querySelector('div.heat___OQao1');
+                    if (heatElement) {
+                        // Get the numeric heat level
+                        const heatLevel = parseInt(heatElement.textContent.trim(), 10);
 
-                    // Check if the heat level exceeds the threshold
-                    if (heatLevel <= HEAT_THRESHOLD) {
-                        playAlertSound();
+                        // Check if the heat level exceeds the threshold
+                        if (heatLevel <= HEAT_THRESHOLD) {
+                            allBelowThreshold = false;
+                        }
                     }
                 }
+            }
+
+            // Play alert sound if all heat levels are below the threshold
+            if (allBelowThreshold) {
+                playAlertSound();
             }
         }
     }
 
     // Function to play the alert sound
     function playAlertSound() {
-        const audio = new Audio(ALERT_SOUND_URL);
-        audio.play();
+        const audio = new Audio(ALERT_SOUND_BASE64);
+        audio.play().catch(function(error) {
+            console.error("Audio playback failed:", error);
+        });
     }
 
-    // Periodically check the heat level
+    // Periodically check all heat levels
     setInterval(checkHeatLevels, CHECK_INTERVAL);
 })();
